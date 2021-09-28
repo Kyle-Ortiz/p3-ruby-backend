@@ -43,6 +43,9 @@ group :development do
   gem "rerun"
 end
 
+#used to easily popluate db
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 # These gems will only be used when we are running tests
 group :test do
   gem "database_cleaner", "~> 2.0"
