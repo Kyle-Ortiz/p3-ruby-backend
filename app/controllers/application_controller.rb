@@ -22,9 +22,64 @@ class ApplicationController < Sinatra::Base
     customer.to_json
   end
 
-  patch '/customers/id' do
+  patch '/customers/:id' do
     customer = Customer.find(params[:id])
     customer.update_attributes(full_name: params[:full_name], email: params[:email], phone_number: params[:phone_number])
   end
+
+  get '/orders' do
+    orders = Order.all
+    orders.to_json
+  end
+
+  post '/orders' do
+    order = Order.create(
+      style_number: params[:style_number],
+      color: params[:color],
+      size: params[:size],
+      print_color: params[:print_color],
+      print_location: params[:print_location],
+      due_date: params[:due_date],
+      customer_id: params[:customer_id],
+      order_status: params[:order_status],
+    )
+  end
+
+  delete '/orders/:id' do
+    order = Order.find(params[:id])
+    order.destroy
+    order.to_json
+  end
+
+  patch '/orders/id' do
+    order = Order.find(params[:id])
+    order.update_attributes()
+  end
+
+    #invoice CRUD
+    delete '/invoices/:id' do
+      invoice = Invoice.find(params[:id])
+    invoice.destroy
+    invoice.to_json
+      end
+    
+      patch '/invoices/:id' do
+      invoice = Invoice.find(params[:id])
+      invoice.update_attributes()
+      end
+    
+      get '/invoices' do
+      invoices = Invoice.all
+      invoices.to_json
+      end
+    
+      post '/invoice' do
+      invoice = Invoice.create(
+          price: params[:price],
+          quantity: params[:quantity],
+          payment_status: params[:payment_status],
+          due_by: params[:due_by],
+        )
+      end
 
 end
