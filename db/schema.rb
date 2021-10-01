@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_025748) do
     t.integer "price"
     t.integer "quantity"
     t.string "payment_status"
+    t.integer "order_id"
     t.datetime "created_at"
     t.datetime "due_by"
   end
