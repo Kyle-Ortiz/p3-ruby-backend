@@ -51,23 +51,7 @@ class ApplicationController < Sinatra::Base
     order.to_json
   end
 
-  patch '/orders/id' do
-    order = Order.find(params[:id])
-    order.update_attributes()
-  end
-
     #invoice CRUD
-    delete '/invoices/:id' do
-      invoice = Invoice.find(params[:id])
-    invoice.destroy
-    invoice.to_json
-      end
-    
-      patch '/invoices/:id' do
-      invoice = Invoice.find(params[:id])
-      invoice.update_attributes()
-      end
-    
       get '/invoices' do
       invoices = Invoice.all
       invoices.to_json
@@ -78,8 +62,10 @@ class ApplicationController < Sinatra::Base
           price: params[:price],
           quantity: params[:quantity],
           payment_status: params[:payment_status],
-          due_by: params[:due_by],
+          due_by: params[:due_by], 
+          order_id: params[:order_id]
         )
+      invoice.to_json
       end
 
 end
