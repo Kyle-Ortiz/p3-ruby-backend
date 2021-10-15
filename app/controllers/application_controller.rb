@@ -22,28 +22,28 @@ class ApplicationController < Sinatra::Base
     customer.to_json
   end
 
-  patch '/customers/:id' do
-    customer = Customer.find(params[:id])
-    customer.update_attributes(full_name: params[:full_name], email: params[:email], phone_number: params[:phone_number])
-  end
+  # patch '/customers/:id' do
+  #   customer = Customer.find(params[:id])
+  #   customer.update_attributes(full_name: params[:full_name], email: params[:email], phone_number: params[:phone_number])
+  # end
 
   get '/orders' do
     orders = Order.all
     orders.to_json
   end
 
-  post '/orders' do
-    order = Order.create(
-      style_number: params[:style_number],
-      color: params[:color],
-      size: params[:size],
-      print_color: params[:print_color],
-      print_location: params[:print_location],
-      due_date: params[:due_date],
-      customer_id: params[:customer_id],
-      order_status: params[:order_status],
-    )
-  end
+  # post '/orders' do
+  #   order = Order.create(
+  #     style_number: params[:style_number],
+  #     color: params[:color],
+  #     size: params[:size],
+  #     print_color: params[:print_color],
+  #     print_location: params[:print_location],
+  #     due_date: params[:due_date],
+  #     customer_id: params[:customer_id],
+  #     order_status: params[:order_status],
+  #   )
+  # end
 
   delete '/orders/:id' do
     order = Order.find(params[:id])
