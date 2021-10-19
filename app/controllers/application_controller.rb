@@ -32,18 +32,18 @@ class ApplicationController < Sinatra::Base
     orders.to_json
   end
 
-  # post '/orders' do
-  #   order = Order.create(
-  #     style_number: params[:style_number],
-  #     color: params[:color],
-  #     size: params[:size],
-  #     print_color: params[:print_color],
-  #     print_location: params[:print_location],
-  #     due_date: params[:due_date],
-  #     customer_id: params[:customer_id],
-  #     order_status: params[:order_status],
-  #   )
-  # end
+  post '/orders' do
+    order = Order.create(
+      style_number: params[:style_number],
+      color: params[:color],
+      size: params[:size],
+      print_color: params[:print_color],
+      print_location: params[:print_location],
+      due_date: params[:due_date],
+      customer_id: params[:customer_id],
+      order_status: params[:order_status],
+    )
+  end
 
   delete '/orders/:id' do
     order = Order.find(params[:id])
